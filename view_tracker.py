@@ -45,10 +45,10 @@ def main():
         load_common(args)
     )
 
-    # Load OBBs
-    tracked_csv = os.path.join(log_dir, f"{args.write_name}_3dbbs_tracked.csv")
-    raw_csv = os.path.join(log_dir, f"{args.write_name}_3dbbs.csv")
-    csv_path = tracked_csv if os.path.exists(tracked_csv) else raw_csv
+    # Load OBBs — always use per-frame raw CSV so TrackerViewer can replay
+    # frame-by-frame. The tracked CSV from run_boxer.py stores only the final
+    # snapshot (all timestamps=0) and is not suitable for per-frame playback.
+    csv_path = os.path.join(log_dir, f"{args.write_name}_3dbbs.csv")
     if not os.path.exists(csv_path):
         raise IOError(f"3D BB CSV not found: {csv_path}")
 

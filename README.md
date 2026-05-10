@@ -14,6 +14,8 @@ Boxer lifts 2D object detections into static, global, fused 3D oriented bounding
 We tested on MacOS (with mps acceleration) and Fedora (with CUDA acceleration).
 
 ```bash
+sudo apt install ffmpeg
+
 # Install uv (https://docs.astral.sh/uv/)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
